@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Surprise! 💖</title>
+
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: black;
+      }
+
+      /* Rose background */
+      .rose-bg {
+        position: absolute;
+        inset: 0;
+        background: url("./rose.jpg") center/cover no-repeat;
+        filter: brightness(0.4);
+        animation: zoomBg 6s ease forwards;
+      }
+
+      @keyframes zoomBg {
+        from {
+          transform: scale(1.1);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Card */
+      .card {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.92);
+        width: 390px; /* fixed width */
+        max-width: 90%;
+        padding: 30px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+
+        opacity: 0;
+        transform: translateY(70px) rotate(0deg);
+        animation: cardIn 1.2s ease forwards;
+        animation-delay: 0.5s;
+      }
+
+      @keyframes cardIn {
+        0% {
+          opacity: 0;
+          transform: translateY(80px) rotate(0deg);
+        }
+        70% {
+          transform: translateY(-8px) rotate(-3deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotate(-2deg);
+        }
+      }
+
+      h1 {
+        color: #d81b60;
+        margin: 0;
+        font-size: 32px;
+      }
+
+      p {
+        color: #333;
+        margin-top: 10px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Background -->
+    <div class="rose-bg"></div>
+
+    <!-- Message card -->
+    <div class="card">
+      <h1>For your beautiful smile! 😊</h1>
+      <p>
+        On this Rose Day, each petal of this rose is a symbol of my love for
+        you. May your life be filled with the fragrance of love and happiness.
+        Your presence colours my life with joy and warmth. Like a rose in full
+        bloom, you bring beauty and fragrance to my world. I fall in love with
+        you every day, and I can't wait to see what the future holds for us.
+        Thank you for being you, and thank you for being mine. Happy Rose Day,
+        my love! 🌹
+      </p>
+    </div>
+  </body>
+</html>
