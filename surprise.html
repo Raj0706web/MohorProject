@@ -84,6 +84,10 @@
   </head>
 
   <body>
+    <audio id="bgMusic" loop>
+      <source src="music/love.mp3" type="audio/mpeg" />
+    </audio>
+
     <!-- Background -->
     <div class="rose-bg"></div>
 
@@ -100,5 +104,59 @@
         my love! 🌹
       </p>
     </div>
+    <!-- Interaction Overlay to ensure music plays -->
+    <div
+      id="overlay"
+      style="
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: &quot;Comic Sans MS&quot;, cursive;
+        cursor: pointer;
+      "
+    >
+      <h1>Tap to Open 🌹</h1>
+    </div>
+
+    <script>
+      window.addEventListener("load", function () {
+        const music = document.getElementById("bgMusic");
+        const overlay = document.getElementById("overlay");
+
+        // Function to start experience
+        function startExperience() {
+          music
+            .play()
+            .then(() => {
+              console.log("Music started");
+            })
+            .catch((e) => {
+              console.log("Music play failed", e);
+            });
+
+          // Fade out overlay
+          overlay.style.transition = "opacity 0.5s";
+          overlay.style.opacity = "0";
+          setTimeout(() => overlay.remove(), 500);
+        }
+
+        // Try autoplay first
+        music
+          .play()
+          .then(() => {
+            // If autoplay works, remove overlay immediately
+            overlay.remove();
+          })
+          .catch(() => {
+            // If autoplay blocked, wait for click on overlay
+            overlay.addEventListener("click", startExperience);
+          });
+      });
+    </script>
   </body>
 </html>
